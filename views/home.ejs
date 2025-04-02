@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="home header">
+    <div class="logo-title">
+        <img src="./styles/images/coffee-love-white.svg" alt="coffee love logo" height="90px"/>
+        <h1>Cozy Blog</h1>
+    </div>
+    <a href="/new" class="btn">Create New Post</a>
+</header>
+
+<!-- Blog Posts -->
+<div class="blog-container <%= posts.length === 0 ? 'no-posts' : '' %>">
+    <% if (posts.length > 0) { %>
+        <div class="posts">
+            <% posts.forEach(post => { %>
+                <div class="post">
+                    <h2><%= post.title %></h2>
+                    <p><%= post.content %></p>
+                    
+                    <div class="button-container">
+                        <a href="/edit/<%= post.id %>" class="btn">Edit</a>
+                        <form action="/delete/<%= post.id %>" method="POST">
+                            <button type="submit" class="btn delete" style="background: #D84040;">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>About This Blog</h3>
+        <p>Welcome to my cozy corner of the internet! 🌟<br>
+            <br>Here, you're invited to share what's on your mind 
+            and connect with others. Whether it’s a story, an experience, 
+            or some wisdom you’d like to pass along, this space is for you.<br>
+            <br>Let’s build a community of shared knowledge, ideas, and support!</p>
+    </div>
+</div>
+
+<!-- Footer -->
+
+    <footer class="footer">
+        <p>&copy; <%= new Date().getFullYear() %> Cozy Blog | Created by Vasiliki Loli</p>
+    </footer>
+
+
+</body>
+</html>
