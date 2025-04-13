@@ -20,7 +20,7 @@ app.get("/new", (req, res) => {
     res.render("new");
 });
 
-// Create Post - Handle form submission
+// Create Post Route - Handle form submission
 app.post("/new", (req, res) => {
     const { title, content } = req.body;
     posts.push({ id: posts.length + 1, title, content });
@@ -33,7 +33,7 @@ app.get("/edit/:id", (req, res) => {
     res.render("edit", { post });
 });
 
-// Update Post - Handle edit submission
+// Update Post Route - Handle edit submission
 app.post("/edit/:id", (req, res) => {
     let post = posts.find(p => p.id === Number(req.params.id));
     post.title = req.body.title;
@@ -41,7 +41,7 @@ app.post("/edit/:id", (req, res) => {
     res.redirect("/");
 });
 
-// Delete Post - Handle deletion
+// Delete Post Route - Handle deletion
 app.post("/delete/:id", (req, res) => {
     posts = posts.filter(p => p.id !== Number(req.params.id));
     res.redirect("/");
